@@ -73,6 +73,9 @@ class Translator implements TranslatorInterface
     public function addResource($format, $resource, $locale, $domain = 'messages')
     {
         $this->resources[$locale][] = array($format, $resource, $domain);
+        
+        // The catalogue should be regenerated when dynamically adding resources.
+        $this->loadCatalogue($locale);
     }
 
     /**
