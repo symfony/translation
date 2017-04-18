@@ -66,13 +66,13 @@ class PluralizationRules
             case 'kn':
             case 'ko':
             case 'ms':
-            case 'th':
             case 'tr':
             case 'vi':
             case 'zh':
                 return 0;
                 break;
 
+            case 'th':
             case 'af':
             case 'bn':
             case 'bg':
