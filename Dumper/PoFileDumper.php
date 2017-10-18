@@ -41,6 +41,7 @@ class PoFileDumper extends FileDumper
             }
             $output .= sprintf('msgid "%s"'."\n", $this->escape($source));
             $output .= sprintf('msgstr "%s"', $this->escape($target));
+            $output .= "\n";
         }
 
         return $output;
