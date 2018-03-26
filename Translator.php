@@ -76,7 +76,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface
     /**
      * @throws InvalidArgumentException If a locale contains invalid characters
      */
-    public function __construct(?string $locale, MessageFormatterInterface $formatter = null, string $cacheDir = null, bool $debug = false)
+    public function __construct(string $locale, MessageFormatterInterface $formatter = null, string $cacheDir = null, bool $debug = false)
     {
         $this->setLocale($locale);
 
