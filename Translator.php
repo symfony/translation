@@ -144,7 +144,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
     /**
      * {@inheritdoc}
      */
-    public function setLocale(string $locale)
+    public function setLocale($locale)
     {
         $this->assertValidLocale($locale);
         $this->locale = $locale;
