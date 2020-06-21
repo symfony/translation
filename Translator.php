@@ -214,7 +214,10 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
             }
         }
 
-        if ($this->hasIntlFormatter && $catalogue->defines($id, $domain.MessageCatalogue::INTL_DOMAIN_SUFFIX)) {
+        if ($this->hasIntlFormatter
+            && ($catalogue->defines($id, $domain.MessageCatalogue::INTL_DOMAIN_SUFFIX)
+                || strstr($domain, MessageCatalogue::INTL_DOMAIN_SUFFIX) != false))
+        {
             return $this->formatter->formatIntl($catalogue->get($id, $domain), $locale, $parameters);
         }
 
@@ -466,7 +469,11 @@ EOF
 
         foreach ($catalogue->all() as $domain => $messages) {
             if ($intlMessages = $catalogue->all($domain.MessageCatalogue::INTL_DOMAIN_SUFFIX)) {
-                $allMessages[$domain.MessageCatalogue::INTL_DOMAIN_SUFFIX] = $intlMessages;
+                if (strstr($domain, MessageCatalogue::INTL_DOMAIN_SUFFIX) === false) {
+                    $domain .= MessageCatalogue::INTL_DOMAIN_SUFFIX;
+                }
+
+                $allMessages[$domain] = $intlMessages;
                 $messages = array_diff_key($messages, $intlMessages);
             }
             if ($messages) {
