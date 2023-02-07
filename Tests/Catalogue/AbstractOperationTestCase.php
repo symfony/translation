@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\MessageCatalogueInterface;
 
-abstract class AbstractOperationTest extends TestCase
+abstract class AbstractOperationTestCase extends TestCase
 {
     public function testGetEmptyDomains()
     {
