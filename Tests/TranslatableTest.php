@@ -11,6 +11,8 @@
 
 namespace Symfony\Component\Translation\Tests;
 
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\IgnoreDeprecations;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\TranslatableMessage;
@@ -42,9 +44,8 @@ class TranslatableTest extends TestCase
         $this->assertSame($expected, $translatable->trans($translator, 'fr'));
     }
 
-    /**
-     * @group legacy
-     */
+    #[IgnoreDeprecations]
+    #[Group('legacy')]
     public function testToString()
     {
         $this->assertSame('Symfony is great!', (string) new TranslatableMessage('Symfony is great!'));
