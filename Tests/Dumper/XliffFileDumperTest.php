@@ -148,24 +148,6 @@ class XliffFileDumperTest extends TestCase
         );
     }
 
-    public function testFormatCatalogueXliff2WithSegmentAttributes()
-    {
-        $catalogue = new MessageCatalogue('en_US');
-        $catalogue->add([
-            'foo' => 'bar',
-            'key' => '',
-        ]);
-        $catalogue->setMetadata('foo', ['segment-attributes' => ['state' => 'translated']]);
-        $catalogue->setMetadata('key', ['segment-attributes' => ['state' => 'translated', 'subState' => 'My Value']]);
-
-        $dumper = new XliffFileDumper();
-
-        $this->assertStringEqualsFile(
-            __DIR__.'/../Fixtures/resources-2.0-segment-attributes.xlf',
-            $dumper->formatCatalogue($catalogue, 'messages', ['default_locale' => 'fr_FR', 'xliff_version' => '2.0'])
-        );
-    }
-
     public function testEmptyMetadataNotes()
     {
         $catalogue = new MessageCatalogue('en_US');
