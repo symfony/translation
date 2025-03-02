@@ -147,7 +147,7 @@ class TranslationDataCollectorTest extends TestCase
         $dataCollector->reset();
 
         $this->assertNull($dataCollector->getLocale());
-        $this->assertEmpty($dataCollector->getFallbackLocales());
+        $this->assertSame([], $dataCollector->getFallbackLocales());
     }
 
     private function getTranslator()
