@@ -695,7 +695,12 @@ XLIFF
     public function testComplete(array $input, array $expectedSuggestions)
     {
         $application = new Application();
-        $application->add($this->createCommand($this->createMock(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], 'en', ['loco', 'crowdin', 'lokalise']));
+        $command = $this->createCommand($this->createMock(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], 'en', ['loco', 'crowdin', 'lokalise']);
+        if (method_exists($application, 'addCommand')) {
+            $application->addCommand($command);
+        } else {
+            $application->add($command);
+        }
 
         $tester = new CommandCompletionTester($application->get('translation:pull'));
         $suggestions = $tester->complete($input);
@@ -724,7 +729,11 @@ XLIFF
     {
         $command = $this->createCommand($provider, $locales, $domains, $defaultLocale);
         $application = new Application();
-        $application->add($command);
+        if (method_exists($application, 'addCommand')) {
+            $application->addCommand($command);
+        } else {
+            $application->add($command);
+        }
 
         return new CommandTester($application->find('translation:pull'));
     }
