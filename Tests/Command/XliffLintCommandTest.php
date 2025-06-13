@@ -210,12 +210,7 @@ XLIFF;
     {
         if (!$application) {
             $application = new Application();
-            $command = new XliffLintCommand(null, null, null, $requireStrictFileNames);
-            if (method_exists($application, 'addCommand')) {
-                $application->addCommand($command);
-            } else {
-                $application->add($command);
-            }
+            $application->addCommand(new XliffLintCommand(null, null, null, $requireStrictFileNames));
         }
 
         $command = $application->find('lint:xliff');

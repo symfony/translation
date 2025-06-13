@@ -138,11 +138,7 @@ EOF, $display);
         $command = new TranslationLintCommand($translator, $enabledLocales);
 
         $application = new Application();
-        if (method_exists($application, 'addCommand')) {
-            $application->addCommand($command);
-        } else {
-            $application->add($command);
-        }
+        $application->addCommand($command);
 
         return $command;
     }
