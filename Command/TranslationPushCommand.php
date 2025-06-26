@@ -83,8 +83,8 @@ final class TranslationPushCommand extends Command
                 new InputArgument('provider', null !== $defaultProvider ? InputArgument::OPTIONAL : InputArgument::REQUIRED, 'The provider to push translations to.', $defaultProvider),
                 new InputOption('force', null, InputOption::VALUE_NONE, 'Override existing translations with local ones (it will delete not synchronized messages).'),
                 new InputOption('delete-missing', null, InputOption::VALUE_NONE, 'Delete translations available on provider but not locally.'),
-                new InputOption('domains', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Specify the domains to push.'),
-                new InputOption('locales', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Specify the locales to push.', $this->enabledLocales),
+                new InputOption('domains', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Specify the domains to push.'),
+                new InputOption('locales', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Specify the locales to push.', $this->enabledLocales),
             ])
             ->setHelp(<<<'EOF'
 The <info>%command.name%</> command pushes translations to the given provider. Only new
