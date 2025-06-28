@@ -5,6 +5,7 @@ CHANGELOG
 ---
 
  * Deprecate `TranslatableMessage::__toString`
+ * Add `Symfony\Component\Translation\StaticMessage`
 
 7.3
 ---
