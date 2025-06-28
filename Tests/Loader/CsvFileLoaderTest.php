@@ -58,14 +58,4 @@ class CsvFileLoaderTest extends TestCase
         (new CsvFileLoader())->load('http://example.com/resources.csv', 'en', 'domain1');
     }
 
-    /**
-     * @group legacy
-     */
-    public function testEscapeCharInCsvControlIsDeprecated()
-    {
-        $loader = new CsvFileLoader();
-
-        $this->expectUserDeprecationMessage('Since symfony/translation 7.2: The "escape" parameter of the "Symfony\Component\Translation\Loader\CsvFileLoader::setCsvControl" method is deprecated. It will be removed in 8.0.');
-        $loader->setCsvControl(';', '"', '\\');
-    }
 }

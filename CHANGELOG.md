@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+8.0
+---
+
+ * Remove the `$escape` parameter from `CsvFileLoader::setCsvControl()`
+
 7.3
 ---
 
