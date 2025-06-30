@@ -5,6 +5,7 @@ CHANGELOG
 ---
 
  * Remove the `$escape` parameter from `CsvFileLoader::setCsvControl()`
+ * Make `DataCollectorTranslator` class `final`
 
 7.3
 ---
