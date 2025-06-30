@@ -6,6 +6,7 @@ CHANGELOG
 
  * Remove the `$escape` parameter from `CsvFileLoader::setCsvControl()`
  * Make `DataCollectorTranslator` class `final`
+ * Remove `ProviderFactoryTestCase`, extend `AbstractProviderFactoryTestCase` instead
 
 7.3
 ---
