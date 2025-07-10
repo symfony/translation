@@ -201,7 +201,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
             }
         }
 
-        if (null === $globalParameters =& $this->globalTranslatedParameters[$locale]) {
+        if (null === $globalParameters = &$this->globalTranslatedParameters[$locale]) {
             $globalParameters = $this->globalParameters;
             foreach ($globalParameters as $key => $value) {
                 if ($value instanceof TranslatableInterface) {
