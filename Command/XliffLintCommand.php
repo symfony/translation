@@ -226,7 +226,7 @@ EOF
         }
 
         foreach ($this->getDirectoryIterator($fileOrDirectory) as $file) {
-            if (!\in_array($file->getExtension(), ['xlf', 'xliff'])) {
+            if (!\in_array($file->getExtension(), ['xlf', 'xliff'], true)) {
                 continue;
             }
 
