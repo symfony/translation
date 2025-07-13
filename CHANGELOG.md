@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+7.4
+---
+
+ * Deprecate `TranslatableMessage::__toString`
+
 7.3
 ---
 
