@@ -42,6 +42,9 @@ class TranslatableTest extends TestCase
         $this->assertSame($expected, $translatable->trans($translator, 'fr'));
     }
 
+    /**
+     * @group legacy
+     */
     public function testToString()
     {
         $this->assertSame('Symfony is great!', (string) new TranslatableMessage('Symfony is great!'));

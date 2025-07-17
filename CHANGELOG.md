@@ -8,6 +8,11 @@ CHANGELOG
  * Make `DataCollectorTranslator` class `final`
  * Remove `ProviderFactoryTestCase`, extend `AbstractProviderFactoryTestCase` instead
 
+7.4
+---
+
+ * Deprecate `TranslatableMessage::__toString`
+
 7.3
 ---
 
