@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Translation\Tests\Command;
 
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -21,9 +22,7 @@ use Symfony\Component\Translation\Translator;
 
 final class TranslationLintCommandTest extends TestCase
 {
-    /**
-     * @requires extension intl
-     */
+    #[RequiresPhpExtension('intl')]
     public function testLintCorrectTranslations()
     {
         $translator = new Translator('en');
@@ -62,9 +61,7 @@ final class TranslationLintCommandTest extends TestCase
         $this->assertStringContainsString('[OK] All translations are valid.', $display);
     }
 
-    /**
-     * @requires extension intl
-     */
+    #[RequiresPhpExtension('intl')]
     public function testLintMalformedIcuTranslations()
     {
         $translator = new Translator('en');
