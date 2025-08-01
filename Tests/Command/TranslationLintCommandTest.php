@@ -108,16 +108,33 @@ final class TranslationLintCommandTest extends TestCase
   fr       messages   No
  -------- ---------- --------
 EOF, $display);
-        $this->assertStringContainsString(<<<EOF
+        $this->assertStringContainsString(\sprintf(<<<EOF
 Errors for locale "en" and domain "messages"
 --------------------------------------------
 
  Translation key "num_of_apples" is invalid:
 
- [ERROR] Invalid message format (error #65807): msgfmt_create: message formatter creation failed:
+ [ERROR] Invalid message format (error #65807): %s: message formatter creation failed:
+         U_DEFAULT_KEYWORD_MISSING
+EOF, \PHP_VERSION_ID >= 80500 ? 'MessageFormatter::__construct()' : 'msgfmt_create'), $display);
+
+        if (\PHP_VERSION_ID >= 80500) {
+            $this->assertStringContainsString(<<<EOF
+Errors for locale "fr" and domain "messages"
+--------------------------------------------
+
+ Translation key "hello_name" is invalid:
+
+ [ERROR] Invalid message format (error #65799): MessageFormatter::__construct(): pattern syntax error (parse error at
+         offset 9, after "Bonjour {", before or at "name !"): U_PATTERN_SYNTAX_ERROR
+
+ Translation key "num_of_apples" is invalid:
+
+ [ERROR] Invalid message format (error #65807): MessageFormatter::__construct(): message formatter creation failed:
          U_DEFAULT_KEYWORD_MISSING
 EOF, $display);
-        $this->assertStringContainsString(<<<EOF
+        } else {
+            $this->assertStringContainsString(<<<EOF
 Errors for locale "fr" and domain "messages"
 --------------------------------------------
 
@@ -131,6 +148,7 @@ Errors for locale "fr" and domain "messages"
  [ERROR] Invalid message format (error #65807): msgfmt_create: message formatter creation failed:
          U_DEFAULT_KEYWORD_MISSING
 EOF, $display);
+        }
     }
 
     private function createCommand(Translator $translator, array $enabledLocales): Command
