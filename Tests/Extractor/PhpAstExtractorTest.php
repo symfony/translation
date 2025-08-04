@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Translation\Tests\Extractor;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Extractor\PhpAstExtractor;
 use Symfony\Component\Translation\Extractor\Visitor\ConstraintVisitor;
@@ -22,9 +23,7 @@ final class PhpAstExtractorTest extends TestCase
 {
     public const OTHER_DOMAIN = 'not_messages';
 
-    /**
-     * @dataProvider resourcesProvider
-     */
+    #[DataProvider('resourcesProvider')]
     public function testExtraction(iterable|string $resource)
     {
         $extractor = new PhpAstExtractor([

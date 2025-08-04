@@ -11,18 +11,17 @@
 
 namespace Symfony\Component\Translation\Tests\Formatter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Exception\InvalidArgumentException;
 use Symfony\Component\Translation\Formatter\IntlFormatter;
 use Symfony\Component\Translation\Formatter\IntlFormatterInterface;
 
-/**
- * @requires extension intl
- */
-class IntlFormatterTest extends \PHPUnit\Framework\TestCase
+#[RequiresPhpExtension('intl')]
+class IntlFormatterTest extends TestCase
 {
-    /**
-     * @dataProvider provideDataForFormat
-     */
+    #[DataProvider('provideDataForFormat')]
     public function testFormat($expected, $message, $arguments)
     {
         $this->assertEquals($expected, trim((new IntlFormatter())->formatIntl($message, 'en', $arguments)));
@@ -90,9 +89,7 @@ _MSG_;
         ];
     }
 
-    /**
-     * @dataProvider percentAndBracketsAreTrimmedProvider
-     */
+    #[DataProvider('percentAndBracketsAreTrimmedProvider')]
     public function testPercentsAndBracketsAreTrimmed(string $expected, string $message, array $parameters)
     {
         $formatter = new IntlFormatter();
