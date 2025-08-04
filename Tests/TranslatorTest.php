@@ -20,6 +20,7 @@ use Symfony\Component\Translation\Exception\RuntimeException;
 use Symfony\Component\Translation\Formatter\IntlFormatterInterface;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
 use Symfony\Component\Translation\Loader\ArrayLoader;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Translation\Translator;
@@ -349,7 +350,7 @@ class TranslatorTest extends TestCase
     public function testFallbackCatalogueResources()
     {
         $translator = new Translator('en_GB');
-        $translator->addLoader('yml', new \Symfony\Component\Translation\Loader\YamlFileLoader());
+        $translator->addLoader('yml', new YamlFileLoader());
         $translator->addResource('yml', __DIR__.'/Fixtures/empty.yml', 'en_GB');
         $translator->addResource('yml', __DIR__.'/Fixtures/resources.yml', 'en');
 
