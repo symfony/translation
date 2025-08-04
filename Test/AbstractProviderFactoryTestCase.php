@@ -36,9 +36,6 @@ abstract class AbstractProviderFactoryTestCase extends TestCase
      */
     abstract public static function unsupportedSchemeProvider(): iterable;
 
-    /**
-     * @dataProvider supportsProvider
-     */
     #[DataProvider('supportsProvider')]
     public function testSupports(bool $expected, string $dsn)
     {
@@ -47,9 +44,6 @@ abstract class AbstractProviderFactoryTestCase extends TestCase
         $this->assertSame($expected, $factory->supports(new Dsn($dsn)));
     }
 
-    /**
-     * @dataProvider createProvider
-     */
     #[DataProvider('createProvider')]
     public function testCreate(string $expected, string $dsn)
     {
@@ -59,9 +53,6 @@ abstract class AbstractProviderFactoryTestCase extends TestCase
         $this->assertSame($expected, (string) $provider);
     }
 
-    /**
-     * @dataProvider unsupportedSchemeProvider
-     */
     #[DataProvider('unsupportedSchemeProvider')]
     public function testUnsupportedSchemeException(string $dsn, ?string $message = null)
     {
