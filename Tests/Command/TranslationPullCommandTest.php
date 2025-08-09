@@ -88,80 +88,80 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en, fr" locale(s), and "messages, messages+intl-icu"', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="Shv46xh" resname="say_hello">
-                <source>say_hello</source>
-                <target>Welcome, {firstname}!</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="Shv46xh" resname="say_hello">
+                            <source>say_hello</source>
+                            <target>Welcome, {firstname}!</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameEnIcu));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>nouveauFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>nouveauFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameFr));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="Shv46xh" resname="say_hello">
-                <source>say_hello</source>
-                <target>Bonjour, {firstname}!</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="Shv46xh" resname="say_hello">
+                            <source>say_hello</source>
+                            <target>Bonjour, {firstname}!</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameFrIcu));
     }
 
@@ -198,44 +198,44 @@ XLIFF
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en, fr" locale(s), and "messages" domain(s)).', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
-  <file id="messages.en">
-    <unit id="5pyqChA" name="new.foo">
-      <segment>
-        <source>new.foo</source>
-        <target>newFoo</target>
-      </segment>
-    </unit>
-    <unit id=".DOalbi" name="note">
-      <segment>
-        <source>note</source>
-        <target>NOTE</target>
-      </segment>
-    </unit>
-  </file>
-</xliff>
-XLIFF
+            <?xml version="1.0" encoding="utf-8"?>
+            <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+              <file id="messages.en">
+                <unit id="5pyqChA" name="new.foo">
+                  <segment>
+                    <source>new.foo</source>
+                    <target>newFoo</target>
+                  </segment>
+                </unit>
+                <unit id=".DOalbi" name="note">
+                  <segment>
+                    <source>note</source>
+                    <target>NOTE</target>
+                  </segment>
+                </unit>
+              </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="fr">
-  <file id="messages.fr">
-    <unit id="5pyqChA" name="new.foo">
-      <segment>
-        <source>new.foo</source>
-        <target>nouveauFoo</target>
-      </segment>
-    </unit>
-    <unit id=".DOalbi" name="note">
-      <segment>
-        <source>note</source>
-        <target>NOTE</target>
-      </segment>
-    </unit>
-  </file>
-</xliff>
-XLIFF
+            <?xml version="1.0" encoding="utf-8"?>
+            <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="fr">
+              <file id="messages.fr">
+                <unit id="5pyqChA" name="new.foo">
+                  <segment>
+                    <source>new.foo</source>
+                    <target>nouveauFoo</target>
+                  </segment>
+                </unit>
+                <unit id=".DOalbi" name="note">
+                  <segment>
+                    <source>note</source>
+                    <target>NOTE</target>
+                  </segment>
+                </unit>
+              </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameFr));
     }
 
@@ -272,15 +272,15 @@ XLIFF
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en, fr" locale(s), and "messages" domain(s)).', trim($tester->getDisplay()));
         $this->assertEquals(<<<YAML
-new.foo: newFoo
-note: NOTE
+            new.foo: newFoo
+            note: NOTE
 
-YAML, file_get_contents($filenameEn));
+            YAML, file_get_contents($filenameEn));
         $this->assertEquals(<<<YAML
-new.foo: nouveauFoo
-note: NOTE
+            new.foo: nouveauFoo
+            note: NOTE
 
-YAML, file_get_contents($filenameFr));
+            YAML, file_get_contents($filenameFr));
     }
 
     public function testPullNewYamlMessagesAsTree()
@@ -316,17 +316,17 @@ YAML, file_get_contents($filenameFr));
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en, fr" locale(s), and "messages" domain(s)).', trim($tester->getDisplay()));
         $this->assertEquals(<<<YAML
-new:
-    foo: newFoo
-note: NOTE
+            new:
+                foo: newFoo
+            note: NOTE
 
-YAML, file_get_contents($filenameEn));
+            YAML, file_get_contents($filenameEn));
         $this->assertEquals(<<<YAML
-new:
-    foo: nouveauFoo
-note: NOTE
+            new:
+                foo: nouveauFoo
+            note: NOTE
 
-YAML, file_get_contents($filenameFr));
+            YAML, file_get_contents($filenameFr));
     }
 
     public function testPullForceMessages()
@@ -372,89 +372,89 @@ YAML, file_get_contents($filenameFr));
 
         $this->assertStringContainsString('[OK] Local translations has been updated from "null" (for "en, fr" locale(s), and "messages, validators" domain(s)).', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>UPDATED NOTE</target>
-            </trans-unit>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>UPDATED NOTE</target>
+                        </trans-unit>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameMessagesEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE MISE À JOUR</target>
-            </trans-unit>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>nouveauFoo</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE MISE À JOUR</target>
+                        </trans-unit>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>nouveauFoo</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameMessagesFr));
 
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="nYScnTy" resname="foo.error">
-                <source>foo.error</source>
-                <target>Bad value</target>
-            </trans-unit>
-            <trans-unit id="fe0ouWC" resname="bar.error">
-                <source>bar.error</source>
-                <target>Bar error</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="nYScnTy" resname="foo.error">
+                            <source>foo.error</source>
+                            <target>Bad value</target>
+                        </trans-unit>
+                        <trans-unit id="fe0ouWC" resname="bar.error">
+                            <source>bar.error</source>
+                            <target>Bar error</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameValidatorsEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="nYScnTy" resname="foo.error">
-                <source>foo.error</source>
-                <target>Valeur invalide</target>
-            </trans-unit>
-            <trans-unit id="fe0ouWC" resname="bar.error">
-                <source>bar.error</source>
-                <target>Bar erreur</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="nYScnTy" resname="foo.error">
+                            <source>foo.error</source>
+                            <target>Valeur invalide</target>
+                        </trans-unit>
+                        <trans-unit id="fe0ouWC" resname="bar.error">
+                            <source>bar.error</source>
+                            <target>Bar erreur</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameValidatorsFr));
     }
 
@@ -493,46 +493,46 @@ XLIFF
 
         $this->assertStringContainsString('[OK] Local translations has been updated from "null" (for "en, fr" locale(s), and "messages" domain(s)).', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>UPDATED NOTE</target>
-            </trans-unit>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>UPDATED NOTE</target>
+                        </trans-unit>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE MISE À JOUR</target>
-            </trans-unit>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>nouveauFoo</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE MISE À JOUR</target>
+                        </trans-unit>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>nouveauFoo</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameFr));
     }
 
@@ -569,46 +569,46 @@ XLIFF
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en, fr" locale(s), and "messages" domain(s)).', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameEn));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>nouveauFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>nouveauFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameFr));
     }
 
@@ -646,46 +646,46 @@ XLIFF
 
         $this->assertStringContainsString('[OK] New translations from "null" has been written locally (for "en" locale(s), and "messages, domain" domain(s)).', trim($tester->getDisplay()));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameMessages));
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
-        <header>
-            <tool tool-id="symfony" tool-name="Symfony"/>
-        </header>
-        <body>
-            <trans-unit id="5pyqChA" resname="new.foo">
-                <source>new.foo</source>
-                <target>newFoo</target>
-            </trans-unit>
-            <trans-unit id=".DOalbi" resname="note">
-                <source>note</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+                    <header>
+                        <tool tool-id="symfony" tool-name="Symfony"/>
+                    </header>
+                    <body>
+                        <trans-unit id="5pyqChA" resname="new.foo">
+                            <source>new.foo</source>
+                            <target>newFoo</target>
+                        </trans-unit>
+                        <trans-unit id=".DOalbi" resname="note">
+                            <source>note</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF
             , file_get_contents($filenameDomain));
     }
 

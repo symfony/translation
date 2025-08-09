@@ -132,14 +132,14 @@ class XliffLintCommandTest extends TestCase
     {
         $command = new XliffLintCommand();
         $expected = <<<EOF
-Or of a whole directory:
+            Or of a whole directory:
 
-  <info>php %command.full_name% dirname</info>
+              <info>php %command.full_name% dirname</info>
 
-The <info>--format</info> option specifies the format of the command output:
+            The <info>--format</info> option specifies the format of the command output:
 
-  <info>php %command.full_name% dirname --format=json</info>
-EOF;
+              <info>php %command.full_name% dirname --format=json</info>
+            EOF;
 
         $this->assertStringContainsString($expected, $command->getHelp());
     }
@@ -184,18 +184,18 @@ EOF;
     private function createFile($sourceContent = 'note', $targetLanguage = 'en', $fileNamePattern = 'messages.%locale%.xlf'): string
     {
         $xliffContent = <<<XLIFF
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="$targetLanguage" datatype="plaintext" original="file.ext">
-        <body>
-            <trans-unit id="note">
-                <source>$sourceContent</source>
-                <target>NOTE</target>
-            </trans-unit>
-        </body>
-    </file>
-</xliff>
-XLIFF;
+            <?xml version="1.0"?>
+            <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+                <file source-language="en" target-language="$targetLanguage" datatype="plaintext" original="file.ext">
+                    <body>
+                        <trans-unit id="note">
+                            <source>$sourceContent</source>
+                            <target>NOTE</target>
+                        </trans-unit>
+                    </body>
+                </file>
+            </xliff>
+            XLIFF;
 
         $filename = \sprintf('%s/translation-xliff-lint-test/%s', sys_get_temp_dir(), str_replace('%locale%', 'en', $fileNamePattern));
         file_put_contents($filename, $xliffContent);
