@@ -41,11 +41,11 @@ final class PhpAstExtractorTest extends TestCase
         $extractor->extract($resource, $catalogue);
 
         $expectedHeredoc = <<<EOF
-heredoc key with whitespace and escaped \$\n sequences
-EOF;
+            heredoc key with whitespace and escaped \$\n sequences
+            EOF;
         $expectedNowdoc = <<<'EOF'
-nowdoc key with whitespace and nonescaped \$\n sequences
-EOF;
+            nowdoc key with whitespace and nonescaped \$\n sequences
+            EOF;
         $expectedCatalogue = [
             'messages' => [
                 'translatable single-quoted key' => 'prefixtranslatable single-quoted key',
