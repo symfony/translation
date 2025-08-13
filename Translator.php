@@ -316,8 +316,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
             %s
             return \$catalogue;
 
-            EOF
-            ,
+            EOF,
             $locale,
             var_export($this->getAllMessages($this->catalogues[$locale]), true),
             $fallbackContent
@@ -341,8 +340,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
                 $catalogue%s = new MessageCatalogue('%s', %s);
                 $catalogue%s->addFallbackCatalogue($catalogue%s);
 
-                EOF
-                ,
+                EOF,
                 $fallbackSuffix,
                 $fallback,
                 var_export($this->getAllMessages($fallbackCatalogue), true),
