@@ -104,7 +104,9 @@ final class TranslationLintCommandTest extends TestCase
               en       messages   No
               fr       messages   No
              -------- ---------- --------
-            EOF, $display);
+            EOF,
+            $display
+        );
         $this->assertStringContainsString(\sprintf(<<<EOF
             Errors for locale "en" and domain "messages"
             --------------------------------------------
@@ -113,7 +115,9 @@ final class TranslationLintCommandTest extends TestCase
 
              [ERROR] Invalid message format (error #65807): %s: message formatter creation failed:
                      U_DEFAULT_KEYWORD_MISSING
-            EOF, \PHP_VERSION_ID >= 80500 ? 'MessageFormatter::__construct()' : 'msgfmt_create'), $display);
+            EOF,
+            \PHP_VERSION_ID >= 80500 ? 'MessageFormatter::__construct()' : 'msgfmt_create'
+        ), $display);
 
         if (\PHP_VERSION_ID >= 80500) {
             $this->assertStringContainsString(<<<EOF
@@ -129,7 +133,9 @@ final class TranslationLintCommandTest extends TestCase
 
                  [ERROR] Invalid message format (error #65807): MessageFormatter::__construct(): message formatter creation failed:
                          U_DEFAULT_KEYWORD_MISSING
-                EOF, $display);
+                EOF,
+                $display
+            );
         } else {
             $this->assertStringContainsString(<<<EOF
                 Errors for locale "fr" and domain "messages"
@@ -144,7 +150,9 @@ final class TranslationLintCommandTest extends TestCase
 
                  [ERROR] Invalid message format (error #65807): msgfmt_create: message formatter creation failed:
                          U_DEFAULT_KEYWORD_MISSING
-                EOF, $display);
+                EOF,
+                $display
+            );
         }
     }
 
