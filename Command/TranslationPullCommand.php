@@ -93,7 +93,7 @@ final class TranslationPullCommand extends Command
                 The <info>%command.name%</> command pulls translations from the given provider. Only
                 new translations are pulled, existing ones are not overwritten.
 
-                You can overwrite existing translations (and remove the missing ones on local side) by using the <comment>--force</> flag:
+                You can overwrite existing translations (and remove the missing ones on local side) by using the <info>--force</> flag:
 
                   <info>php %command.full_name% --force provider</>
 
@@ -101,7 +101,7 @@ final class TranslationPullCommand extends Command
 
                   <info>php %command.full_name% provider --force --domains=messages --domains=validators --locales=en</>
 
-                This command pulls all translations associated with the <comment>messages</> and <comment>validators</> domains for the <comment>en</> locale.
+                This command pulls all translations associated with the <info>messages</> and <info>validators</> domains for the <info>en</> locale.
                 Local translations for the specified domains and locale are deleted if they're not present on the provider and overwritten if it's the case.
                 Local translations for others domains and locales are ignored.
                 EOF
