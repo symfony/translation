@@ -183,7 +183,7 @@ final class PseudoLocalizationTranslator implements TranslatorInterface, Transla
 
             $parts[] = [false, false, '>'];
 
-            $parts = array_merge($parts, $this->parseNode($childNode, $parts));
+            $parts = array_merge($parts, $this->parseNode($childNode));
 
             $parts[] = [false, false, '</'.$childNode->tagName.'>'];
         }
