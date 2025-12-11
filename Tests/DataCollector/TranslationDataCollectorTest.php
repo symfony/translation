@@ -16,15 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Translation\DataCollector\TranslationDataCollector;
 use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\Translator;
 
 class TranslationDataCollectorTest extends TestCase
 {
     public function testCollectEmptyMessages()
     {
-        $translator = $this->getTranslator();
-        $translator->expects($this->any())->method('getCollectedMessages')->willReturn([]);
-
-        $dataCollector = new TranslationDataCollector($translator);
+        $dataCollector = new TranslationDataCollector(new DataCollectorTranslator(new Translator('en')));
         $dataCollector->lateCollect();
 
         $this->assertEquals(0, $dataCollector->getCountMissings());
@@ -139,7 +137,7 @@ class TranslationDataCollectorTest extends TestCase
         $translator->method('getFallbackLocales')->willReturn(['en']);
 
         $dataCollector = new TranslationDataCollector($translator);
-        $dataCollector->collect($this->createMock(Request::class), $this->createMock(Response::class));
+        $dataCollector->collect(new Request(), new Response());
 
         $this->assertSame('fr', $dataCollector->getLocale());
         $this->assertSame(['en'], $dataCollector->getFallbackLocales());
