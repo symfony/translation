@@ -375,7 +375,7 @@ class TranslationPushCommandTest extends TranslationProviderTestCase
     public function testComplete(array $input, array $expectedSuggestions)
     {
         $application = new Application();
-        $application->add($this->createCommand($this->createMock(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], ['loco', 'crowdin', 'lokalise']));
+        $application->add($this->createCommand($this->createStub(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], ['loco', 'crowdin', 'lokalise']));
 
         $tester = new CommandCompletionTester($application->get('translation:push'));
         $suggestions = $tester->complete($input);

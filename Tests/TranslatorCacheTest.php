@@ -252,7 +252,7 @@ class TranslatorCacheTest extends TestCase
 
     public function testRefreshCacheWhenResourcesAreNoLongerFresh()
     {
-        $resource = $this->createMock(SelfCheckingResourceInterface::class);
+        $resource = $this->createStub(SelfCheckingResourceInterface::class);
         $loader = $this->createMock(LoaderInterface::class);
         $resource->method('isFresh')->willReturn(false);
         $loader
