@@ -717,7 +717,7 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
     public function testComplete(array $input, array $expectedSuggestions)
     {
         $application = new Application();
-        $command = $this->createCommand($this->createMock(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], 'en', ['loco', 'crowdin', 'lokalise']);
+        $command = $this->createCommand($this->createStub(ProviderInterface::class), ['en', 'fr', 'it'], ['messages', 'validators'], 'en', ['loco', 'crowdin', 'lokalise']);
         if (method_exists($application, 'addCommand')) {
             $application->addCommand($command);
         } else {
