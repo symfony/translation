@@ -435,7 +435,7 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
         }
 
         foreach ($this->fallbackLocales as $fallback) {
-            if ($fallback === $originLocale) {
+            if (!$fallback || $fallback === $originLocale) {
                 continue;
             }
 
