@@ -200,10 +200,11 @@ class TranslationPushCommandTest extends TranslationProviderTestCase
         ], 'fr'));
 
         $provider = $this->createMock(ProviderInterface::class);
-        $provider->expects($this->any())
+        $provider
             ->method('read')
-            ->with($domains, $locales)
-            ->willReturn($providerReadTranslatorBag);
+            ->willReturnMap([
+                [$domains, $locales, $providerReadTranslatorBag],
+            ]);
 
         // Create local bag, with a missing message.
         $localTranslatorBag = new TranslatorBag();
@@ -222,10 +223,11 @@ class TranslationPushCommandTest extends TranslationProviderTestCase
         $providerReadTranslatorBag->addCatalogue($arrayLoader->load(['note' => 'NOTE'], 'en'));
         $providerReadTranslatorBag->addCatalogue($arrayLoader->load(['note' => 'NOTE'], 'fr'));
 
-        $provider->expects($this->any())
+        $provider
             ->method('read')
-            ->with($domains, $locales)
-            ->willReturn($providerReadTranslatorBag);
+            ->willReturnMap([
+                [$domains, $locales, $providerReadTranslatorBag],
+            ]);
 
         $provider->expects($this->once())
             ->method('write')
@@ -262,10 +264,11 @@ class TranslationPushCommandTest extends TranslationProviderTestCase
         ], 'fr'));
 
         $provider = $this->createMock(ProviderInterface::class);
-        $provider->expects($this->any())
+        $provider
             ->method('read')
-            ->with($domains, $locales)
-            ->willReturn($providerReadTranslatorBag);
+            ->willReturnMap([
+                [$domains, $locales, $providerReadTranslatorBag],
+            ]);
 
         // Create local bag, with a missing message, an updated one and a new one.
         $localTranslatorBag = new TranslatorBag();
@@ -284,10 +287,11 @@ class TranslationPushCommandTest extends TranslationProviderTestCase
         $providerReadTranslatorBag->addCatalogue($arrayLoader->load(['note' => 'NOTE'], 'en'));
         $providerReadTranslatorBag->addCatalogue($arrayLoader->load(['note' => 'NOTE'], 'fr'));
 
-        $provider->expects($this->any())
+        $provider
             ->method('read')
-            ->with($domains, $locales)
-            ->willReturn($providerReadTranslatorBag);
+            ->willReturnMap([
+                [$domains, $locales, $providerReadTranslatorBag],
+            ]);
 
         $translationBagToWrite = $localTranslatorBag->diff($providerReadTranslatorBag);
         $translationBagToWrite->addBag($localTranslatorBag->intersect($providerReadTranslatorBag));
