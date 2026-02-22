@@ -80,7 +80,7 @@ class XliffFileLoader implements LoaderInterface
             $this->extractXliff1($dom, $catalogue, $domain);
         }
 
-        if ('2.0' === $xliffVersion) {
+        if (\in_array($xliffVersion, ['2.0', '2.1', '2.2'], true)) {
             $this->extractXliff2($dom, $catalogue, $domain);
         }
     }

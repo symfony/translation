@@ -258,6 +258,42 @@ class XliffFileLoaderTest extends TestCase
         $this->assertEquals(['target-attributes' => ['order' => 1]], $catalogue->getMetadata('bar', 'domain1'));
     }
 
+    public function testLoadVersion21()
+    {
+        $loader = new XliffFileLoader();
+        $resource = __DIR__.'/../Fixtures/resources-2.1.xlf';
+        $catalogue = $loader->load($resource, 'en', 'domain1');
+
+        $this->assertEquals('en', $catalogue->getLocale());
+        $this->assertEquals([new FileResource($resource)], $catalogue->getResources());
+        $this->assertSame([], libxml_get_errors());
+
+        $domains = $catalogue->all();
+        $this->assertCount(3, $domains['domain1']);
+        $this->assertContainsOnlyString($catalogue->all('domain1'));
+
+        // target attributes
+        $this->assertEquals(['target-attributes' => ['order' => 1]], $catalogue->getMetadata('bar', 'domain1'));
+    }
+
+    public function testLoadVersion22()
+    {
+        $loader = new XliffFileLoader();
+        $resource = __DIR__.'/../Fixtures/resources-2.2.xlf';
+        $catalogue = $loader->load($resource, 'en', 'domain1');
+
+        $this->assertEquals('en', $catalogue->getLocale());
+        $this->assertEquals([new FileResource($resource)], $catalogue->getResources());
+        $this->assertSame([], libxml_get_errors());
+
+        $domains = $catalogue->all();
+        $this->assertCount(3, $domains['domain1']);
+        $this->assertContainsOnlyString($catalogue->all('domain1'));
+
+        // target attributes
+        $this->assertEquals(['target-attributes' => ['order' => 1]], $catalogue->getMetadata('bar', 'domain1'));
+    }
+
     public function testLoadVersion2WithNoteMeta()
     {
         $loader = new XliffFileLoader();
