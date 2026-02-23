@@ -5,6 +5,7 @@ CHANGELOG
 ---
 
  * Add support for XLIFF 2.1 and 2.2
+ * Add support for XLIFF 2.2 PGS (Plural, Gender, and Select Module)
 
 8.0
 ---

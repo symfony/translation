@@ -130,8 +130,11 @@ class XliffUtils
         if ('1.2' === $xliffVersion) {
             $schemaSource = file_get_contents(__DIR__.'/../Resources/schemas/xliff-core-1.2-transitional.xsd');
             $xmlUri = 'http://www.w3.org/2001/xml.xsd';
-        } elseif (\in_array($xliffVersion, ['2.0', '2.1', '2.2'], true)) {
+        } elseif (\in_array($xliffVersion, ['2.0', '2.1'], true)) {
             $schemaSource = file_get_contents(__DIR__.'/../Resources/schemas/xliff-core-2.0.xsd');
+            $xmlUri = 'informativeCopiesOf3rdPartySchemas/w3c/xml.xsd';
+        } elseif ('2.2' === $xliffVersion) {
+            $schemaSource = file_get_contents(__DIR__.'/../Resources/schemas/xliff-core-2.2.xsd');
             $xmlUri = 'informativeCopiesOf3rdPartySchemas/w3c/xml.xsd';
         } else {
             throw new InvalidArgumentException(\sprintf('No support implemented for loading XLIFF version "%s".', $xliffVersion));
