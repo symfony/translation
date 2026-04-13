@@ -100,9 +100,8 @@ class PoFileDumper extends FileDumper
             if (preg_match($intervalRegexp, $part)) {
                 // Explicit rule is not a standard rule.
                 return [];
-            } else {
-                $standardRules[] = $part;
             }
+            $standardRules[] = $part;
         }
 
         return $standardRules;
