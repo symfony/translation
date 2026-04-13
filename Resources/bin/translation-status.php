@@ -60,7 +60,7 @@ if ($argc > 4) {
     exit(1);
 }
 
-foreach (array_slice($argv, 1) as $argumentOrOption) {
+foreach (\array_slice($argv, 1) as $argumentOrOption) {
     if ('--incomplete' === $argumentOrOption) {
         $config['include_completed_languages'] = false;
         continue;
@@ -75,7 +75,7 @@ foreach (array_slice($argv, 1) as $argumentOrOption) {
 
 foreach ($config['original_files'] as $originalFilePath) {
     if (!file_exists($originalFilePath)) {
-        echo sprintf('The following file does not exist. Make sure that you execute this command at the root dir of the Symfony code repository.%s  %s', \PHP_EOL, $originalFilePath);
+        echo \sprintf('The following file does not exist. Make sure that you execute this command at the root dir of the Symfony code repository.%s  %s', \PHP_EOL, $originalFilePath);
         exit(1);
     }
 }
@@ -87,8 +87,8 @@ foreach ($config['original_files'] as $originalFilePath) {
     $translationFilePaths = findTranslationFiles($originalFilePath, $config['locale_to_analyze']);
     $translationStatus = calculateTranslationStatus($originalFilePath, $translationFilePaths);
 
-    $totalMissingTranslations += array_sum(array_map(static fn ($translation) => count($translation['missingKeys']), array_values($translationStatus)));
-    $totalTranslationMismatches += array_sum(array_map(static fn ($translation) => count($translation['mismatches']), array_values($translationStatus)));
+    $totalMissingTranslations += array_sum(array_map(static fn ($translation) => \count($translation['missingKeys']), array_values($translationStatus)));
+    $totalTranslationMismatches += array_sum(array_map(static fn ($translation) => \count($translation['mismatches']), array_values($translationStatus)));
 
     printTranslationStatus($originalFilePath, $translationStatus, $config['verbose_output'], $config['include_completed_languages']);
 }
@@ -99,7 +99,7 @@ function findTranslationFiles($originalFilePath, $localeToAnalyze): array
 {
     $translations = [];
 
-    $translationsDir = dirname($originalFilePath);
+    $translationsDir = \dirname($originalFilePath);
     $originalFileName = basename($originalFilePath);
     $translationFileNamePattern = str_replace('.en.', '.*.', $originalFileName);
 
@@ -129,8 +129,8 @@ function calculateTranslationStatus($originalFilePath, $translationFilePaths): a
         $mismatches = findTransUnitMismatches($allTranslationKeys, $translatedKeys);
 
         $translationStatus[$locale] = [
-            'total' => count($allTranslationKeys),
-            'translated' => count($translatedKeys),
+            'total' => \count($allTranslationKeys),
+            'translated' => \count($translatedKeys),
             'missingKeys' => $missingKeys,
             'mismatches' => $mismatches,
         ];
@@ -142,7 +142,7 @@ function calculateTranslationStatus($originalFilePath, $translationFilePaths): a
 
 function isTranslationCompleted(array $translationStatus): bool
 {
-    return $translationStatus['total'] === $translationStatus['translated'] && 0 === count($translationStatus['mismatches']);
+    return $translationStatus['total'] === $translationStatus['translated'] && 0 === \count($translationStatus['mismatches']);
 }
 
 function printTranslationStatus($originalFilePath, $translationStatus, $verboseOutput, $includeCompletedLanguages): void
@@ -156,7 +156,7 @@ function extractLocaleFromFilePath($filePath)
 {
     $parts = explode('.', $filePath);
 
-    return $parts[count($parts) - 2];
+    return $parts[\count($parts) - 2];
 }
 
 function extractTranslationKeys($filePath): array
@@ -199,12 +199,12 @@ function findTransUnitMismatches(array $baseTranslationKeys, array $translatedKe
 function printTitle($title): void
 {
     echo $title.\PHP_EOL;
-    echo str_repeat('=', strlen($title)).\PHP_EOL.\PHP_EOL;
+    echo str_repeat('=', \strlen($title)).\PHP_EOL.\PHP_EOL;
 }
 
 function printTable($translations, $verboseOutput, bool $includeCompletedLanguages): void
 {
-    if (0 === count($translations)) {
+    if (0 === \count($translations)) {
         echo 'No translations found';
 
         return;
@@ -218,37 +218,37 @@ function printTable($translations, $verboseOutput, bool $includeCompletedLanguag
 
         if ($translation['translated'] > $translation['total']) {
             textColorRed();
-        } elseif (count($translation['mismatches']) > 0) {
+        } elseif (\count($translation['mismatches']) > 0) {
             textColorRed();
         } elseif ($translation['is_completed']) {
             textColorGreen();
         }
 
-        echo sprintf(
+        echo \sprintf(
             '|  Locale: %-'.$longestLocaleNameLength.'s  |  Translated: %2d/%2d  |  Mismatches: %d  |',
             $locale,
             $translation['translated'],
             $translation['total'],
-            count($translation['mismatches'])
+            \count($translation['mismatches'])
         ).\PHP_EOL;
 
         textColorNormal();
 
         $shouldBeClosed = false;
-        if (true === $verboseOutput && count($translation['missingKeys']) > 0) {
+        if (true === $verboseOutput && \count($translation['missingKeys']) > 0) {
             echo '|    Missing Translations:'.\PHP_EOL;
 
             foreach ($translation['missingKeys'] as $id => $content) {
-                echo sprintf('|      (id=%s) %s', $id, $content).\PHP_EOL;
+                echo \sprintf('|      (id=%s) %s', $id, $content).\PHP_EOL;
             }
             $shouldBeClosed = true;
         }
-        if (true === $verboseOutput && count($translation['mismatches']) > 0) {
+        if (true === $verboseOutput && \count($translation['mismatches']) > 0) {
             echo '|    Mismatches between trans-unit id and source:'.\PHP_EOL;
 
             foreach ($translation['mismatches'] as $id => $content) {
-                echo sprintf('|      (id=%s) Expected: %s', $id, $content['expected']).\PHP_EOL;
-                echo sprintf('|              Found:    %s', $content['found']).\PHP_EOL;
+                echo \sprintf('|      (id=%s) Expected: %s', $id, $content['expected']).\PHP_EOL;
+                echo \sprintf('|              Found:    %s', $content['found']).\PHP_EOL;
             }
             $shouldBeClosed = true;
         }
