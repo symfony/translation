@@ -104,8 +104,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameEn));
+            XLIFF,
+            file_get_contents($filenameEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -121,8 +122,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameEnIcu));
+            XLIFF,
+            file_get_contents($filenameEnIcu)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -142,8 +144,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameFr));
+            XLIFF,
+            file_get_contents($filenameFr)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -159,8 +162,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameFrIcu));
+            XLIFF,
+            file_get_contents($filenameFrIcu)
+        );
     }
 
     public function testPullNewXlf20Messages()
@@ -213,8 +217,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                 </unit>
               </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameEn));
+            XLIFF,
+            file_get_contents($filenameEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0" encoding="utf-8"?>
             <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="fr">
@@ -233,8 +238,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                 </unit>
               </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameFr));
+            XLIFF,
+            file_get_contents($filenameFr)
+        );
     }
 
     public function testPullNewYamlMessagesAsInlined()
@@ -273,12 +279,16 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
             new.foo: newFoo
             note: NOTE
 
-            YAML, file_get_contents($filenameEn));
+            YAML,
+            file_get_contents($filenameEn)
+        );
         $this->assertEquals(<<<YAML
             new.foo: nouveauFoo
             note: NOTE
 
-            YAML, file_get_contents($filenameFr));
+            YAML,
+            file_get_contents($filenameFr)
+        );
     }
 
     public function testPullNewYamlMessagesAsTree()
@@ -318,13 +328,17 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                 foo: newFoo
             note: NOTE
 
-            YAML, file_get_contents($filenameEn));
+            YAML,
+            file_get_contents($filenameEn)
+        );
         $this->assertEquals(<<<YAML
             new:
                 foo: nouveauFoo
             note: NOTE
 
-            YAML, file_get_contents($filenameFr));
+            YAML,
+            file_get_contents($filenameFr)
+        );
     }
 
     public function testPullForceMessages()
@@ -388,8 +402,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameMessagesEn));
+            XLIFF,
+            file_get_contents($filenameMessagesEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -409,8 +424,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameMessagesFr));
+            XLIFF,
+            file_get_contents($filenameMessagesFr)
+        );
 
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
@@ -431,8 +447,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameValidatorsEn));
+            XLIFF,
+            file_get_contents($filenameValidatorsEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -452,8 +469,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameValidatorsFr));
+            XLIFF,
+            file_get_contents($filenameValidatorsFr)
+        );
     }
 
     /**
@@ -511,8 +529,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameEn));
+            XLIFF,
+            file_get_contents($filenameEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -532,8 +551,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameFr));
+            XLIFF,
+            file_get_contents($filenameFr)
+        );
     }
 
     public function testPullMessagesWithDefaultLocale()
@@ -587,8 +607,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameEn));
+            XLIFF,
+            file_get_contents($filenameEn)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -608,8 +629,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameFr));
+            XLIFF,
+            file_get_contents($filenameFr)
+        );
     }
 
     public function testPullMessagesMultipleDomains()
@@ -664,8 +686,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameMessages));
+            XLIFF,
+            file_get_contents($filenameMessages)
+        );
         $this->assertXmlStringEqualsXmlString(<<<XLIFF
             <?xml version="1.0"?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
@@ -685,8 +708,9 @@ class TranslationPullCommandTest extends TranslationProviderTestCase
                     </body>
                 </file>
             </xliff>
-            XLIFF
-            , file_get_contents($filenameDomain));
+            XLIFF,
+            file_get_contents($filenameDomain)
+        );
     }
 
     /**
