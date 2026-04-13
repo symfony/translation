@@ -35,38 +35,38 @@ class XliffFileLoaderTest extends TestCase
     {
         $loader = new XliffFileLoader();
         $resource = <<<XLIFF
-<?xml version="1.0" encoding="utf-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="file.ext">
-    <body>
-      <trans-unit id="1">
-        <source>foo</source>
-        <target>bar</target>
-      </trans-unit>
-      <trans-unit id="2">
-        <source>extra</source>
-      </trans-unit>
-      <trans-unit id="3">
-        <source>key</source>
-        <target></target>
-      </trans-unit>
-      <trans-unit id="4">
-        <source>test</source>
-        <target state="needs-translation">with</target>
-        <note>note</note>
-      </trans-unit>
-      <trans-unit id="5">
-        <source>baz</source>
-        <target state="needs-translation">baz</target>
-      </trans-unit>
-      <trans-unit id="6" resname="buz">
-        <source>baz</source>
-        <target state="needs-translation">buz</target>
-      </trans-unit>
-    </body>
-  </file>
-</xliff>
-XLIFF;
+            <?xml version="1.0" encoding="utf-8"?>
+            <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+              <file source-language="en" datatype="plaintext" original="file.ext">
+                <body>
+                  <trans-unit id="1">
+                    <source>foo</source>
+                    <target>bar</target>
+                  </trans-unit>
+                  <trans-unit id="2">
+                    <source>extra</source>
+                  </trans-unit>
+                  <trans-unit id="3">
+                    <source>key</source>
+                    <target></target>
+                  </trans-unit>
+                  <trans-unit id="4">
+                    <source>test</source>
+                    <target state="needs-translation">with</target>
+                    <note>note</note>
+                  </trans-unit>
+                  <trans-unit id="5">
+                    <source>baz</source>
+                    <target state="needs-translation">baz</target>
+                  </trans-unit>
+                  <trans-unit id="6" resname="buz">
+                    <source>baz</source>
+                    <target state="needs-translation">buz</target>
+                  </trans-unit>
+                </body>
+              </file>
+            </xliff>
+            XLIFF;
 
         $catalogue = $loader->load($resource, 'en', 'domain1');
 

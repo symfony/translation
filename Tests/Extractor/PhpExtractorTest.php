@@ -36,11 +36,11 @@ class PhpExtractorTest extends TestCase
         $extractor->extract($resource, $catalogue);
 
         $expectedHeredoc = <<<EOF
-heredoc key with whitespace and escaped \$\n sequences
-EOF;
+            heredoc key with whitespace and escaped \$\n sequences
+            EOF;
         $expectedNowdoc = <<<'EOF'
-nowdoc key with whitespace and nonescaped \$\n sequences
-EOF;
+            nowdoc key with whitespace and nonescaped \$\n sequences
+            EOF;
         // Assert
         $expectedCatalogue = [
             'messages' => [
