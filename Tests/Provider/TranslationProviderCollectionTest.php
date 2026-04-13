@@ -25,7 +25,7 @@ class TranslationProviderCollectionTest extends TestCase
     public function testKeysWithGenerator()
     {
         $this->assertSame(['foo', 'baz'], (new TranslationProviderCollection(
-            (function () {
+            (static function () {
                 yield 'foo' => new NullProvider();
 
                 yield 'baz' => new NullProvider();
