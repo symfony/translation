@@ -170,7 +170,7 @@ final class TranslationPushCommand extends Command
         $domains = [];
 
         foreach ($translatorBag->getCatalogues() as $catalogue) {
-            $domains += $catalogue->getDomains();
+            $domains = array_merge($domains, $catalogue->getDomains());
         }
 
         return array_unique($domains);
