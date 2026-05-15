@@ -243,9 +243,18 @@ class XliffFileLoader implements LoaderInterface
 
     private function parsePgsSwitch(string $pgsSwitch): array
     {
+        $trimmed = trim($pgsSwitch);
+        if ('' === $trimmed) {
+            throw new InvalidResourceException('The pgs:switch attribute must not be empty.');
+        }
+
         $switches = [];
-        foreach (preg_split('/\s+/', trim($pgsSwitch)) as $item) {
-            $switches[] = array_combine(['type', 'variable'], explode(':', $item, 2));
+        foreach (preg_split('/\s+/', $trimmed) as $item) {
+            $parts = explode(':', $item, 2);
+            if (2 !== \count($parts) || '' === $parts[0] || '' === $parts[1]) {
+                throw new InvalidResourceException(\sprintf('The pgs:switch token "%s" must use the "type:variable" form.', $item));
+            }
+            $switches[] = ['type' => $parts[0], 'variable' => $parts[1]];
         }
 
         return $switches;
@@ -260,17 +269,53 @@ class XliffFileLoader implements LoaderInterface
             }
         }
 
+        return $this->collectPgsText(dom_import_simplexml($element), $pluralVariables);
+    }
+
+    private function collectPgsText(\DOMNode $node, array $pluralVariables): string
+    {
         $text = '';
-        foreach (dom_import_simplexml($element)->childNodes as $child) {
-            if (\XML_TEXT_NODE === $child->nodeType) {
+        foreach ($node->childNodes as $child) {
+            if (\XML_TEXT_NODE === $child->nodeType || \XML_CDATA_SECTION_NODE === $child->nodeType) {
                 $text .= $child->textContent;
-            } elseif (\XML_ELEMENT_NODE === $child->nodeType && 'ph' === $child->localName) {
-                if (($disp = $child->getAttribute('disp')) && isset($pluralVariables[$disp])) {
+                continue;
+            }
+
+            if (\XML_ELEMENT_NODE !== $child->nodeType) {
+                continue;
+            }
+
+            if ('ph' === $child->localName) {
+                $disp = $child->getAttribute('disp');
+                if ('' !== $disp && isset($pluralVariables[$disp])) {
                     $text .= '#';
-                } elseif ($disp) {
+                } elseif ('' !== $disp) {
                     $text .= '{'.$disp.'}';
                 }
+                continue;
             }
+
+            if (\in_array($child->localName, ['pc', 'mrk'], true)) {
+                $text .= $this->collectPgsText($child, $pluralVariables);
+                continue;
+            }
+
+            if ('cp' === $child->localName) {
+                $hex = $child->getAttribute('hex');
+                if ('' !== $hex && ctype_xdigit($hex)) {
+                    $codepoint = hexdec($hex);
+                    if ($codepoint <= 0x10FFFF && ($codepoint < 0xD800 || $codepoint > 0xDFFF)) {
+                        $text .= mb_chr($codepoint, 'UTF-8');
+                    }
+                }
+                continue;
+            }
+
+            if (\in_array($child->localName, ['sc', 'ec', 'sm', 'em'], true)) {
+                continue;
+            }
+
+            $text .= $this->collectPgsText($child, $pluralVariables);
         }
 
         return $text;
