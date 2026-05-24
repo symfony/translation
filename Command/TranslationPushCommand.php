@@ -177,6 +177,6 @@ final class TranslationPushCommand extends Command
             $domains = array_merge($domains, $catalogue->getDomains());
         }
 
-        return array_unique($domains);
+        return array_values(array_unique($domains));
     }
 }
