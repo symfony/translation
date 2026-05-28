@@ -159,6 +159,12 @@ class XliffFileLoader implements LoaderInterface
         $xml = simplexml_import_dom($dom);
         $encoding = $dom->encoding ? strtoupper($dom->encoding) : null;
 
+        $xml->registerXPathNamespace('mda', 'urn:oasis:names:tc:xliff:metadata:2.0');
+
+        foreach ($xml->xpath('//mda:meta') as $meta) {
+            $catalogue->setCatalogueMetadata($meta->attributes()['type'] ?? '', (string) $meta, $domain);
+        }
+
         $xml->registerXPathNamespace('xliff', 'urn:oasis:names:tc:xliff:document:2.0');
 
         foreach ($xml->xpath('//xliff:unit') as $unit) {

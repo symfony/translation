@@ -39,6 +39,7 @@ class XliffFileDumperTest extends TestCase
     public function testFormatCatalogueXliff2()
     {
         $catalogue = new MessageCatalogue('en_US');
+        $catalogue->setCatalogueMetadata('key', 'value');
         $catalogue->add([
             'foo' => 'bar',
             'key' => '',
