@@ -258,6 +258,15 @@ class XliffFileLoaderTest extends TestCase
         $this->assertEquals(['target-attributes' => ['order' => 1]], $catalogue->getMetadata('bar', 'domain1'));
     }
 
+    public function testLoadVersion2WithCatalogMeta()
+    {
+        $loader = new XliffFileLoader();
+        $resource = __DIR__.'/../Fixtures/resources-catalog-meta.xlf';
+        $catalogue = $loader->load($resource, 'en');
+
+        $this->assertSame(['key' => 'value'], $catalogue->getCatalogueMetadata());
+    }
+
     public function testLoadVersion2WithNoteMeta()
     {
         $loader = new XliffFileLoader();
