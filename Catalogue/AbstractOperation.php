@@ -174,7 +174,9 @@ abstract class AbstractOperation implements OperationInterface
             $result->replace($allIntlMessages + $messages, $intlDomain);
 
             foreach ($result->getCatalogueMetadata('', $domain) ?? [] as $key => $value) {
-                $result->setCatalogueMetadata($key, $value, $intlDomain);
+                if (null === $this->result->getCatalogueMetadata($key, $intlDomain)) {
+                    $result->setCatalogueMetadata($key, $value, $intlDomain);
+                }
             }
         }
     }
