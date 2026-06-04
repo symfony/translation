@@ -155,7 +155,7 @@ class TargetOperationTest extends AbstractOperationTestCase
         );
     }
 
-    protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target)
+    protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target): TargetOperation
     {
         return new TargetOperation($source, $target);
     }
