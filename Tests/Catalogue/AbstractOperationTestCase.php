@@ -82,6 +82,9 @@ abstract class AbstractOperationTestCase extends TestCase
         );
     }
 
+    /**
+     * @requires extension intl
+     */
     public function testMovingMessagesToIntlDomainsKeepsCatalogueMetadata()
     {
         $target = new MessageCatalogue('en', ['messages' => ['foo' => 'bar']]);
