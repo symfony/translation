@@ -113,7 +113,7 @@ class MergeOperationTest extends AbstractOperationTestCase
         );
     }
 
-    protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target)
+    protected function createOperation(MessageCatalogueInterface $source, MessageCatalogueInterface $target): MergeOperation
     {
         return new MergeOperation($source, $target);
     }
