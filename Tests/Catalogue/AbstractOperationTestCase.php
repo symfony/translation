@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Translation\Tests\Catalogue;
 
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Catalogue\AbstractOperation;
 use Symfony\Component\Translation\Exception\LogicException;
@@ -82,6 +83,7 @@ abstract class AbstractOperationTestCase extends TestCase
         );
     }
 
+    #[RequiresPhpExtension('intl')]
     public function testMovingMessagesToIntlDomainsKeepsCatalogueMetadata()
     {
         $target = new MessageCatalogue('en', ['messages' => ['foo' => 'bar']]);
